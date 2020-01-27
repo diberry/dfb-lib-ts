@@ -1,0 +1,10 @@
+out
+build
+node_modules
+coverage
+tmp
+coverage
+.env
+.env.prod
+*.tgz
+unzip

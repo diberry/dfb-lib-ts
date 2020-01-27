@@ -1,0 +1,42 @@
+{
+  "name": "dfb-lib-ts",
+  "version": "0.0.1",
+  "description": "Base library for typescript modules",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "test": "jest --detectOpenHandles --coverage --watchAll",
+    "test-build": "jest --detectOpenHandles --coverage",
+    "clean": "rimraf build/*",
+    "prepare": "npm run build",
+    "prepublishOnly": "pm run format && npm run lint && npm run test-build ",
+    "preversion": "pm run format && npm run lint && npm run test-build ",
+    "postversion": "git push && git push --tags",
+    "version": "npm run format && git add -A src",
+    "prebuild": "npm run clean",
+    "build": "npm run format && npm run lint && npm run test-build && tsc -p tsconfig.build.json --resolveJsonModule",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\" \"__mocks__/**/*.ts\" \"__mocks__/**/*.js\" \"tests/**/*.ts\" ",
+    "lint": "eslint ./src/**/*.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node": "^13.6.0",
+    "typescript": "^3.7.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.9.1",
+    "@types/node": "^13.5.0",
+    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/parser": "^2.17.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.0.0",
+    "jest": "^25.1.0"
+  }
+}
